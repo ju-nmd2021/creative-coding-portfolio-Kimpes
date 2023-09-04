@@ -1,6 +1,7 @@
 const STACKS = 5;
 const HEIGHT = 5;
 const WEIGHT = 3;
+const VARIETY = 1;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -29,7 +30,7 @@ function drawTower(x, y, h) {
     let randomHeight = random(30, 70);
     let randomWidth = random(30, 70);
     rect(
-      random(-10, 10),
+      random(-10 * VARIETY, 10 * VARIETY),
       previousHeight - randomHeight,
       randomWidth,
       randomHeight
