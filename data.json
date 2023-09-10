@@ -1,9 +1,30 @@
 [
   {
-    "file": "experiments/example.js",
-    "name": "Name of your experiment",
-    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
-    "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
+    "file": "experiments/unstable-cubes.js",
+    "name": "Unstable Cubes 1",
+    "description": "Using grids, randomisation, and the blend mode ADD, i create a looping glitching effect for a series of squares.",
+    "background": "It utilises the concept of chromatic abberation to emulate old glitching effects on videos",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/unstable-cubes-static.js",
+    "name": "Unstable Cubes 2",
+    "description": "Instead of looping, it now uses a mouseClicked function to create one field at a time",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/unstable-cubes-static-perlin.js",
+    "name": "Unstable Cubes 3",
+    "description": "Currently the same as version 2, but will eventually use perlin noise to distribute the glitches",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/choose-your-tower.js",
+    "name": "Choose your Tower",
+    "description": "Using functions to draw towers of randomly sized cubes, this program will display all of them for the user to look at and pick their favourite",
+    "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   }
 ]
