@@ -3,24 +3,47 @@ function setup() {
   background(255, 255, 255);
 }
 
+let mouse = createVector(mouseX, mouseY);
+
 class Body {
-  constructor(x, y, v1, v2, a1, a2) {
+  constructor(x, y) {
     this.position = createVector(x, y);
-    this.velocity = createVector(v1, v2);
-    this.acceleration = createVector(a1, a2);
+    this.velocity = createVector(10, 10);
+    this.acceleration;
   }
 
-  drawBall() {
-    ellipse(this.position.x, this.position.y);
+  draw() {
+    ellipse(this.position.x, this.position.y, 50);
+  }
+
+  update() {
+    //cited from Garritt's lecture on vectors and complexity
+    this.acceleration = p5.Vector.sub(mouse, this.position);
+    this.acceleration.normalize();
+    this.acceleration.mult(0.5);
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
   }
 }
 
-let testBall = new Body(100, 100, 0, 0, 0, 0);
+let testBall = new Body(100, 100);
 let ballList = [testBall];
 
 function draw() {
   ellipse(50, 50, 50);
-  testBall.drawBall();
+  for (let ball of ballList) {
+    mouse = createVector(mouseX, mouseY);
+    ball.draw();
+    ball.update();
+  }
+
+  acceleration = p5.Vector.sub(mouse, position);
+  acceleration.normalize();
+  acceleration.mult(0.5);
+  // Add the speed to the ball
+  velocity.add(acceleration);
+  velocity.limit(10);
+  position.add(velocity);
 }
 
 function mouseClicked() {
