@@ -82,15 +82,15 @@ function draw() {
       ball.paint();
     }
   }
+  for (let paintBall of paintBalls) {
+    paintBall.draw();
+  }
   for (let ball of ballList) {
     ball.draw();
     ball.update();
   }
-  for (let paintBall of paintBalls) {
-    paintBall.draw();
-  }
+  
 }
-
 function mouseClicked() {
   paintMode *= -1;
 }
