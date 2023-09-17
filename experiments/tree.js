@@ -11,11 +11,11 @@ function setup() {
 let branchList = [];
 
 class TreeBranch {
-  constructor(x, y, canSplit) {
+  constructor(x, y, canSplit, lifespan) {
     this.position = createVector(x, y);
     this.velocity = createVector(random(-1, 1), 0);
     this.acceleration = 0;
-    this.lifespan = 200;
+    this.lifespan = lifespan;
     this.canSplit = canSplit;
   }
   draw() {
@@ -26,7 +26,12 @@ class TreeBranch {
     pop();
   }
   multiply() {
-    let newBranch = new TreeBranch(this.position.x, this.position.y, false);
+    let newBranch;
+    if (random(0, 100) < 20 - branchList.length) {
+      newBranch = new TreeBranch(this.position.x, this.position.y, true, this.lifespan + random(-50, 50));
+    }else{
+      newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 50));
+    }
     branchList.push(newBranch);
   }
   update() {
@@ -64,7 +69,7 @@ class TreeBranch {
 }
 
 let mouse = createVector(mouseX, mouseY);
-let branch1 = new TreeBranch(innerWidth/2, innerHeight - 100, true);
+let branch1 = new TreeBranch(innerWidth/2, innerHeight - 100, true, 400);
 branchList.push(branch1);
 
 function draw() {
