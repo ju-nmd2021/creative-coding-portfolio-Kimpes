@@ -51,8 +51,8 @@ class TreeBranch {
     this.acceleration = p5.Vector.sub(mouse, this.position);
     this.acceleration.normalize();
     this.acceleration.mult(0.05);
-    this.acceleration.y *= random(0, 5);
-    this.acceleration.x *= random(-2, 2);
+    this.acceleration.y *= random(0, 1);
+    this.acceleration.x *= random(-1, 1);
     if (this.acceleration.y > 0) {
       this.acceleration.y *= -1;
     }
