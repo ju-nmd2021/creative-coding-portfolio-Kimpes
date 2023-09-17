@@ -27,10 +27,10 @@ class TreeBranch {
   }
   multiply() {
     let newBranch;
-    if (random(0, 100) < 20 - branchList.length) {
+    if (random(0, 100) < 10 - branchList.length) {
       newBranch = new TreeBranch(this.position.x, this.position.y, true, this.lifespan + random(-50, 50));
     }else{
-      newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 50));
+      newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 200));
     }
     branchList.push(newBranch);
   }
@@ -69,9 +69,6 @@ class TreeBranch {
 }
 
 let mouse = createVector(mouseX, mouseY);
-let branch1 = new TreeBranch(innerWidth/2, innerHeight - 100, true, 400);
-branchList.push(branch1);
-
 function draw() {
   mouse = createVector(mouseX, mouseY);
 
@@ -84,5 +81,6 @@ function draw() {
 }
 
 function mouseClicked() {
-
+  let branch1 = new TreeBranch(mouseX, mouseY, true, random(100, 400));
+  branchList.push(branch1);
 }
