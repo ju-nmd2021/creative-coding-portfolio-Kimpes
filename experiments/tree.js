@@ -54,7 +54,6 @@ class TreeBranch {
     this.velocity.add(this.acceleration);
     this.velocity.limit(1);
     this.position.add(this.velocity);
-    console.log(this.lifespan);
     this.lifespan--;
   }
   isDead() {
