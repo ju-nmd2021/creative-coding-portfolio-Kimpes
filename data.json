@@ -47,5 +47,12 @@
     "description": "Intead of creating one paint blob per click, this one creates a streak until another click is triggered",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/sketch.js",
+    "name": "Screaming Balls",
+    "description": "The balls are supposed to scream when moused over, it needs a fix tho",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   }
 ]
