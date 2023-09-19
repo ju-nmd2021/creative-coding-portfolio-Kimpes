@@ -11,8 +11,8 @@ let ballList = [];
 
 window.addEventListener("load", () => {
   //variables
-  ball1 = new SoundBall(100, 100, "c4");
-  ball2 = new SoundBall(200, 100, "g4");
+  ball1 = new SoundBall(100, 100, "C4");
+  ball2 = new SoundBall(200, 100, "G4");
   ballList = [ball1, ball2];
   volume = new Tone.Volume().toDestination();
   oscillator = new Tone.Oscillator(440, "sine").connect(volume);
@@ -71,18 +71,17 @@ function draw() {
     ball.draw();
     mousePosition = {
       position: createVector(mouseX, mouseY)
-    }
+    };
 
     if (checkCollision(mousePosition, ball)) {
       ballSound = true;
       pitch = ball.pitch;
-      console.log("colisions");
     }
   }
 
   if (ballSound) {
-    console.log("collision")
-    oscillator.frequency = pitch;
+    oscillator.frequency.value = pitch;
+    console.log(oscillator.frequency.value)
     volume.volume.value = -20;
   } else {
     volume.volume.value = -100;
@@ -100,8 +99,8 @@ function keyPressed() {
 
 function checkCollision(object, block) {
   if (object.position.x > block.position.x - 25 && object.position.x < block.position.x + 25 && object.position.y > block.position.y - 25 && object.position.y < block.position.y + 25) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
