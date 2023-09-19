@@ -35,6 +35,13 @@
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   },
   {
+    "file": "experiments/tree-windy.js",
+    "name": "Tree with Wind",
+    "description": "Now, the trees sway in the wind created by flow fields based on perlin noise",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
     "file": "experiments/paint-balls.js",
     "name": "Paint Balls v1",
     "description": "This uses vectors and gravitational attraction towards the mouse and it creates particle-esque paint blobs when clicked",
