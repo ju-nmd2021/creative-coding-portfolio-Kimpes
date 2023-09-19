@@ -121,7 +121,7 @@ function generateField() {
   for (let x = 0; x < maxCols; x++) {
     field.push([]);
     for (let y = 0; y < maxRows; y++) {
-      const value = noise(x / divider, y / divider) * Math.PI * 2;
+      const value = noise(x / divider, y / divider) * Math.PI * 2 + (Math.PI / 2);
       field[x].push(p5.Vector.fromAngle(value));
     }
   }
