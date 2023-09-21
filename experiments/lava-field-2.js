@@ -11,6 +11,10 @@ const LINE_SIZE = 2;
 const LINE_GAP = 10;
 const LINE_GAP_VARIATION = 5;
 const MAX_LIFE = 200;
+const SPLIT_POTENTIAL = 5;
+const STARTING_TREES_CAN_SPLIT = false;
+const LINE_SIZE_VARIATION = 0;
+const STRAY_LINE_PROBABILITY = 0;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -19,8 +23,13 @@ function setup() {
   field = generateField();
   for (let i = 10; i < innerWidth; i += LINE_GAP) {
     for (let j = 10; j < innerHeight; j += LINE_GAP) {
-        let color = [random(0, 15), random(80, 100), random(60, 100)];
-        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), false, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
+      let color;
+      if (random(0, 100) < STRAY_LINE_PROBABILITY){
+        color = [random(15, 100), random(80, 100), random(60, 100)];
+        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STARTING_TREES_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
+      }
+        color = [random(0, 15), random(80, 100), random(60, 100)];
+        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STARTING_TREES_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
     }
   }
 }
@@ -36,12 +45,13 @@ class TreeBranch {
     this.maxForce = maxForce;
     this.maxSpeed = maxSpeed;
     this.color = color;
+    this.splitPotential = SPLIT_POTENTIAL;
   }
   draw() {
     push();
     strokeWeight(0);
     fill(this.color[0], this.color[1], this.color[2]);
-    ellipse(this.position.x + random(-LINE_WIGGLE, LINE_WIGGLE), this.position.y  + random(-LINE_WIGGLE, LINE_WIGGLE), LINE_SIZE);
+    ellipse(this.position.x + random(-LINE_WIGGLE, LINE_WIGGLE), this.position.y  + random(-LINE_WIGGLE, LINE_WIGGLE), LINE_SIZE + random(-LINE_SIZE_VARIATION, LINE_SIZE_VARIATION));
     pop();
   }
   follow(desiredDirection) {
@@ -69,17 +79,20 @@ class TreeBranch {
   multiply() {
     let newBranch;
     if (random(0, 100) < 10 - branchList.length) {
-      let newColour = [this.color[0] + random(-40, 40), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
+      let newColour = [this.color[0] + random(-2, 2), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
       newBranch = new TreeBranch(this.position.x, this.position.y, true, this.lifespan + random(0, 500), 0.1, 4, newColour);
     }else{
-      let newColour = [this.color[0] + random(-40, 40), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
+      let newColour = [this.color[0] + random(-2, 2), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
       newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 200), 0.1, 4, newColour);
     }
     branchList.push(newBranch);
   }
   update() {
-    if (random(0, this.lifespan) > this.lifespan - 1 && this.canSplit) {
-      this.multiply();
+    if (random(0, this.lifespan) > this.lifespan - 10 && this.canSplit) {
+      if (this.splitPotential > 0) {
+        this.multiply();
+        this.splitPotential--;
+      }
     }
     
     if (this.acceleration.y > 0) {
