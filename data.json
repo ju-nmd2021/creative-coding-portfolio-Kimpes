@@ -75,5 +75,19 @@
     "description": "By focusing on a more red and contrasty colour-space, together with a slimey green as the stray colour, this version evokes a much more horrific atmosphere",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/lava-field-scifi.js",
+    "name": "Lava field v4",
+    "description": "Another change of vibe, this time with more alien and sci-fi feeling colours and shapes",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/lava-field-schifi-2.js",
+    "name": "Lava field v5",
+    "description": "with a velocity put at a much higher value, this sort of glitchy streaky effect is created",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   }
 ]
