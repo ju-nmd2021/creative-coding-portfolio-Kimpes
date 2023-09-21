@@ -5,29 +5,42 @@ const maxRows = Math.ceil(innerHeight / fieldSize);
 const divider = 4;
 let field;
 let mouse = createVector(mouseX, mouseY);
+const SHARP_CURVES = 100;
+const LINE_WIGGLE = 0;
+const LINE_SIZE = 2;
+const LINE_GAP = 100;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
-  background(255, 255, 255);
+  background(0, 0, 0);
+  colorMode(HSB, 100);
   field = generateField();
+  for (let i = 10; i < innerWidth; i += LINE_GAP) {
+    for (let j = 10; j < innerHeight; j += LINE_GAP) {
+        let color = [random(0, 15), random(60, 100), random(60, 100)];
+        startTree(i, j, false, random(50, 400), SHARP_CURVES, 4, color);
+    }
+  }
 }
 
 // Branch Class --------------------------
 class TreeBranch {
-  constructor(x, y, canSplit, lifespan, maxForce, maxSpeed) {
+  constructor(x, y, canSplit, lifespan, maxForce, maxSpeed, color) {
     this.position = createVector(x, y);
-    this.velocity = createVector(random(-1, 1), 0);
+    this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.lifespan = lifespan;
     this.canSplit = canSplit;
     this.maxForce = maxForce;
     this.maxSpeed = maxSpeed;
+    this.color = color;
+    console.log(this.color);
   }
   draw() {
     push();
     strokeWeight(0);
-    fill(100, 150, 10);
-    ellipse(this.position.x, this.position.y, 2);
+    fill(this.color[0], this.color[1], this.color[2]);
+    ellipse(this.position.x + random(-LINE_WIGGLE, LINE_WIGGLE), this.position.y  + random(-LINE_WIGGLE, LINE_WIGGLE), LINE_SIZE);
     pop();
   }
   follow(desiredDirection) {
@@ -55,14 +68,16 @@ class TreeBranch {
   multiply() {
     let newBranch;
     if (random(0, 100) < 10 - branchList.length) {
-      newBranch = new TreeBranch(this.position.x, this.position.y, true, this.lifespan + random(-50, 50), 0.1, 4);
+      let newColour = [this.color[0] + random(-40, 40), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
+      newBranch = new TreeBranch(this.position.x, this.position.y, true, this.lifespan + random(0, 500), 0.1, 4, newColour);
     }else{
-      newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 200), 0.1, 4);
+      let newColour = [this.color[0] + random(-40, 40), this.color[1] + random(-40, 40), this.color[2] + random(-40, 40)];
+      newBranch = new TreeBranch(this.position.x, this.position.y, false, this.lifespan + random(-50, 200), 0.1, 4, newColour);
     }
     branchList.push(newBranch);
   }
   update() {
-    if (random(0, this.lifespan) > this.lifespan - 5 && this.canSplit) {
+    if (random(0, this.lifespan) > this.lifespan - 1 && this.canSplit) {
       this.multiply();
     }
     
@@ -106,11 +121,12 @@ function draw() {
 
 // Functions -----------------------------
 function mouseClicked() {
-  startTree(mouseX, mouseY, true, random(50, 1000), 0.1, 4);
+  let color = [random(0, 100), random(0, 100), random(0, 100)];
+  startTree(mouseX, mouseY, true, random(50, 1000), 0.1, 4, color);
 }
 
-function startTree(x, y, canSplit, lifespan, maxForce, maxSpeed) {
-  let newBranch = new TreeBranch(x, y, canSplit, lifespan, maxForce, maxSpeed);
+function startTree(x, y, canSplit, lifespan, maxForce, maxSpeed, color) {
+  let newBranch = new TreeBranch(x, y, canSplit, lifespan, maxForce, maxSpeed, color);
   branchList.push(newBranch);
 }
 
