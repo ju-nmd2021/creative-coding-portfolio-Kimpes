@@ -7,13 +7,6 @@
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   },
   {
-    "file": "experiments/unstable-cubes.js",
-    "name": "Unstable Cubes 1",
-    "description": "Using grids, randomisation, and the blend mode ADD, i create a looping glitching effect for a series of squares.",
-    "background": "It utilises the concept of chromatic abberation to emulate old glitching effects on videos",
-    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
-  },
-  {
     "file": "experiments/unstable-cubes-static.js",
     "name": "Unstable Cubes 2",
     "description": "Instead of looping, it now uses a mouseClicked function to create one field at a time",
@@ -21,23 +14,23 @@
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   },
   {
-    "file": "experiments/unstable-cubes-static-perlin.js",
-    "name": "Unstable Cubes 3",
-    "description": "Currently the same as version 2, but will eventually use perlin noise to distribute the glitches",
-    "background": "N/A",
-    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
-  },
-  {
     "file": "experiments/tree.js",
     "name": "Tree",
-    "description": "Using autonomous agents, i generate tree/vegetable looking stuff",
+    "description": "Using autonomous agents, i generate tree/vegetable looking stuff. Click to activate",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   },
   {
     "file": "experiments/tree-windy.js",
     "name": "Tree with Wind",
-    "description": "Now, the trees sway in the wind created by flow fields based on perlin noise",
+    "description": "Now, the trees sway in the wind created by flow fields based on perlin noise. Click to activate",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/tree-windy-2.js",
+    "name": "Tree with Wind v2",
+    "description": "The trees have funky colours. Click to activate",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   },
@@ -59,6 +52,20 @@
     "file": "experiments/sketch.js",
     "name": "Screaming Balls",
     "description": "The balls scream when moused over",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/lava-field.js",
+    "name": "Lava field",
+    "description": "Based on the trees from a previous experiment, now with a warm pallette they create a sort of network of lava-flows",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/lava-field-2.js",
+    "name": "Lava field v2",
+    "description": "With a more dense collection of lines, now the lava flows across the entire screen, with some stray lines that provide a pop of colour",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   }

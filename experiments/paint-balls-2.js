@@ -1,12 +1,18 @@
-function setup() {
-  createCanvas(innerWidth, innerHeight);
-  background(255, 255, 255);
-}
-
-let mouse = createVector(mouseX, mouseY);
+let mouse;
 let paintMode = -1;
 let paintBalls = [];
 const BALL_SIZE = 50;
+let ballList = [];
+
+
+function setup() {
+  mouse = createVector(mouseX, mouseY);
+  createCanvas(innerWidth, innerHeight);
+  background(255, 255, 255);
+  
+  let ball1 = new Ball(100, 100);
+  ballList.push(ball1);
+}
 
 class PaintBall {
   constructor(position, color) {
@@ -70,9 +76,6 @@ class Ball {
     paintBalls.push(newPaintBall);
   }
 }
-
-let ball1 = new Ball(100, 100);
-let ballList = [ball1];
 
 function draw() {
   background(255, 255, 255, 50);

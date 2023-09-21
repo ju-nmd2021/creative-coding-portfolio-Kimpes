@@ -8,6 +8,7 @@ function setup() {
   blendMode(MULTIPLY);
   angleMode(DEGREES);
   rectMode(CENTER);
+  noLoop();
   background(255, 255, 255);
 }
 
@@ -48,9 +49,9 @@ function draw() {
   blendMode(BLEND);
   background(255, 255, 255);
   pop();
-  for (let i = 0; i <= SQUARE_COUNT; i++) {
+  for (let i = 2; i <= SQUARE_COUNT; i++) {
     push();
-    for (let j = 0; j <= SQUARE_COUNT; j++) {
+    for (let j = 2; j <= SQUARE_COUNT; j++) {
       if (random(100) < RATE) {
         drawSplitRect(50 * j, 50 * i, 50, 0, INTENSITY);
       } else {
@@ -59,7 +60,6 @@ function draw() {
     }
     pop();
   }
-  noLoop();
 }
 
 function mouseClicked() {

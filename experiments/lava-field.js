@@ -4,7 +4,7 @@ const maxCols = Math.ceil(innerWidth / fieldSize);
 const maxRows = Math.ceil(innerHeight / fieldSize);
 const divider = 4;
 let field;
-let mouse = createVector(mouseX, mouseY);
+let mouse;
 const SHARP_CURVES = 10;
 const LINE_WIGGLE = 0;
 const LINE_SIZE = 2;
@@ -14,6 +14,7 @@ function setup() {
   createCanvas(innerWidth, innerHeight);
   background(0, 0, 0);
   colorMode(HSB, 100);
+  mouse = createVector(mouseX, mouseY);
   field = generateField();
   for (let i = 10; i < innerWidth; i += LINE_GAP) {
     for (let j = 10; j < innerHeight; j += LINE_GAP) {

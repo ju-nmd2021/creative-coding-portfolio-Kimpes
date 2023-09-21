@@ -2,10 +2,12 @@ const SQUARE_COUNT = 14;
 const INTENSITY = 2;
 const WEIGHT = 10;
 const RATE = 1;
+let mouse;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
   background(255, 255, 255);
+  mouse = createVector(mouseX, mouseY);
 }
 
 let branchList = [];
@@ -68,7 +70,7 @@ class TreeBranch {
   }
 }
 
-let mouse = createVector(mouseX, mouseY);
+
 function draw() {
   mouse = createVector(mouseX, mouseY);
 

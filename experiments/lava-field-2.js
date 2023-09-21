@@ -4,8 +4,8 @@ const maxCols = Math.ceil(innerWidth / fieldSize);
 const maxRows = Math.ceil(innerHeight / fieldSize);
 const divider = 4;
 let field;
-let mouse = createVector(mouseX, mouseY);
-const SHARP_CURVES = 1;
+let mouse;
+const SHARP_CURVES = 1; // 0.01 = smooth curves, 1+ = sharp curves
 const LINE_WIGGLE = 2;
 const LINE_SIZE = 2;
 const LINE_GAP = 10;
@@ -14,19 +14,24 @@ const MAX_LIFE = 200;
 const SPLIT_POTENTIAL = 5;
 const STARTING_TREES_CAN_SPLIT = false;
 const LINE_SIZE_VARIATION = 0;
-const STRAY_LINE_PROBABILITY = 0;
+
+const STRAY_LINE_PROBABILITY = 10;
+const STRAY_LINE_CAN_SPLIT = false;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
   background(0, 0, 0);
   colorMode(HSB, 100);
+
+  mouse = createVector(mouseX, mouseY);
+
   field = generateField();
   for (let i = 10; i < innerWidth; i += LINE_GAP) {
     for (let j = 10; j < innerHeight; j += LINE_GAP) {
       let color;
       if (random(0, 100) < STRAY_LINE_PROBABILITY){
         color = [random(15, 100), random(80, 100), random(60, 100)];
-        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STARTING_TREES_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
+        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STRAY_LINE_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
       }
         color = [random(0, 15), random(80, 100), random(60, 100)];
         startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STARTING_TREES_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
