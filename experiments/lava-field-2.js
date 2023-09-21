@@ -1,14 +1,16 @@
 let branchList = [];
-const fieldSize = 50;
+const fieldSize = 30;
 const maxCols = Math.ceil(innerWidth / fieldSize);
 const maxRows = Math.ceil(innerHeight / fieldSize);
 const divider = 4;
 let field;
 let mouse = createVector(mouseX, mouseY);
-const SHARP_CURVES = 10;
-const LINE_WIGGLE = 0;
+const SHARP_CURVES = 1;
+const LINE_WIGGLE = 2;
 const LINE_SIZE = 2;
-const LINE_GAP = 100;
+const LINE_GAP = 10;
+const LINE_GAP_VARIATION = 5;
+const MAX_LIFE = 200;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -18,7 +20,7 @@ function setup() {
   for (let i = 10; i < innerWidth; i += LINE_GAP) {
     for (let j = 10; j < innerHeight; j += LINE_GAP) {
         let color = [random(0, 15), random(80, 100), random(60, 100)];
-        startTree(i, j, false, random(50, 1000), SHARP_CURVES, 4, color);
+        startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), false, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
     }
   }
 }
