@@ -68,5 +68,12 @@
     "description": "With a more dense collection of lines, now the lava flows across the entire screen, with some stray lines that provide a pop of colour",
     "background": "N/A",
     "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
+  },
+  {
+    "file": "experiments/lava-field-horror.js",
+    "name": "Lava field v3",
+    "description": "By focusing on a more red and contrasty colour-space, together with a slimey green as the stray colour, this version evokes a much more horrific atmosphere",
+    "background": "N/A",
+    "github": "https://github.com/ju-nmd2021/creative-coding-portfolio-Kimpes"
   }
 ]

@@ -5,18 +5,18 @@ const maxRows = Math.ceil(innerHeight / fieldSize);
 const divider = 4;
 let field;
 let mouse = createVector(mouseX, mouseY);
-const SHARP_CURVES = 1; // 0.01 = smooth curves, 1+ = sharp curves
-const LINE_WIGGLE = 2;
-const LINE_SIZE = 2;
-const LINE_GAP = 10;
-const LINE_GAP_VARIATION = 5;
-const MAX_LIFE = 200;
+const SHARP_CURVES = 10; // 0.01 = smooth curves, 1+ = sharp curves
+const LINE_WIGGLE = 1;
+const LINE_SIZE = 3;
+const LINE_SIZE_VARIATION = 1;
+const LINE_GAP = 20;
+const LINE_GAP_VARIATION = 30;
+const MAX_LIFE = 100;
 const SPLIT_POTENTIAL = 5;
 const STARTING_TREES_CAN_SPLIT = false;
-const LINE_SIZE_VARIATION = 0;
 
-const STRAY_LINE_PROBABILITY = 10;
-const STRAY_LINE_CAN_SPLIT = false;
+const STRAY_LINE_PROBABILITY = 3;
+const STRAY_LINE_CAN_SPLIT = true;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -27,10 +27,10 @@ function setup() {
     for (let j = 10; j < innerHeight; j += LINE_GAP) {
       let color;
       if (random(0, 100) < STRAY_LINE_PROBABILITY){
-        color = [random(15, 100), random(80, 100), random(60, 100)];
+        color = [30, random(40, 100), random(60, 100)];
         startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STRAY_LINE_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
       }
-        color = [random(0, 15), random(80, 100), random(60, 100)];
+        color = [random(0, 5), random(80, 100), random(60, 100)];
         startTree(i + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), j + random(-LINE_GAP_VARIATION, LINE_GAP_VARIATION), STARTING_TREES_CAN_SPLIT, random(50, MAX_LIFE), SHARP_CURVES, 100, color);
     }
   }
@@ -137,7 +137,7 @@ function draw() {
 
 // Functions -----------------------------
 function mouseClicked() {
-  let color = [random(0, 100), random(0, 100), random(0, 100)];
+  let color = [random(0, 100), random(50, 100), random(50, 100)];
   startTree(mouseX, mouseY, true, random(50, 1000), 0.1, 4, color);
 }
 
